@@ -89,9 +89,4 @@ ARG VERSION
 
 RUN make out/skaffold-linux-amd64 VERSION=$VERSION && mv out/skaffold-linux-amd64 /usr/bin/skaffold
 
-CMD ["make", "integration"]
-
-FROM runtime_deps as distribution
-
-COPY --from=integration /usr/bin/skaffold /usr/bin/skaffold
-
+ENTRYPOINT ["/usr/bin/skaffold"]
